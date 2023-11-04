@@ -41,11 +41,45 @@ def main():
             if(item["Major"]== hashmapMajor):
                 print(item)
     elif (choice==4):
+        newId=int(input("Enter ID:"))
+        name=str(input("Enter Name:"))
+        age=int(input("Enter Age:"))
+        major=str(input("Enter Major:"))
+        gpa=float(input("Enter Gpa:"))
+        newStudent={
+            "ID": newId,"Name": name,"Age": age,"Major": major,"GPA": gpa},
+        student_data.append(newStudent)
+        print(student_data)
+    elif (choice==5):
+        commonMap={}
+        for item in student_data:
+            major = item["Major"]
+            if major in commonMap:
+                commonMap[major]+=1
+            else:
+                commonMap[major]=1
+        print(commonMap)
+    elif (choice==6):
         hashmapId=int(input("Enter ID:"))
         for item in student_data:
             if(item["ID"]== hashmapId):
                 student_data.remove(item)
-            print(student_data)        
-        
+            print(student_data)
+    elif (choice==7):
+        sum=0
+        count=0
+        for item in student_data:
+            sum+=item["GPA"]
+            count+=1
+        print(sum/count)
+    elif (choice==8):
+        max=3.0
+        for item in student_data:
+            if(item["GPA"]>=max):
+                print(item)
+    elif (choice==9):
+        print("Thanks for using my Menu Program!!!")
+    else:
+        print("Invalid Input")
 
 main()
