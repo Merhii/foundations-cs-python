@@ -35,5 +35,6 @@ def main():
                 print(item)
     elif(choice==2):
         print(student_data)
+  
 
 main()
