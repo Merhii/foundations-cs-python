@@ -40,5 +40,12 @@ def main():
         for item in student_data:
             if(item["Major"]== hashmapMajor):
                 print(item)
+    elif (choice==4):
+        hashmapId=int(input("Enter ID:"))
+        for item in student_data:
+            if(item["ID"]== hashmapId):
+                student_data.remove(item)
+            print(student_data)        
+        
 
 main()
