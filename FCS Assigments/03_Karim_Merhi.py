@@ -35,6 +35,10 @@ def main():
                 print(item)
     elif(choice==2):
         print(student_data)
-  
+    elif (choice==3):
+        hashmapMajor=str(input("Enter Major:"))
+        for item in student_data:
+            if(item["Major"]== hashmapMajor):
+                print(item)
 
 main()
