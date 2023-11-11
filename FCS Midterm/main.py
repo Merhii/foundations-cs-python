@@ -2,6 +2,15 @@ class Tab:
     def __init__(self,URL,Title):
         self.URL=URL
         self.Title=Title
+Tabs ={} #Title key URL value
+Opened_Tabs=[]
+def addTab():
+    URL=str(input("Enter website url: "))
+    Title=str(input("Enter website Title: "))
+    _Tab = Tab(URL,Title) # created the object 
+    Tabs[Title]=_Tab #assigned tittle key 
+    Opened_Tabs.append(_Tab) #added _tab to my array
+
 
 string='''
 1. Open Tab
@@ -18,7 +27,7 @@ def main():
     choice = int(input("Enter a choice 9 to exit"))
     while(choice!=9):
         if (choice==1):
-            print("hi")
+            addTab()
         elif (choice==2):
             print("hi")
         elif (choice==3):
