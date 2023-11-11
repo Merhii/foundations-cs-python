@@ -11,6 +11,11 @@ def addTab():
     Tabs[Title]=_Tab #assigned tittle key 
     Opened_Tabs.append(_Tab) #added _tab to my array
 
+def closeTab(index):
+    index=int(input("Enter Index you wish to close: "))
+    for i in Opened_Tabs:
+        if (index==i):
+            Opened_Tabs.pop(i)
 
 string='''
 1. Open Tab
