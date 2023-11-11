@@ -21,6 +21,11 @@ def closeTab(index):
     else:
         Opened_Tabs.pop(index)     
 
+def printTabs():
+    if (len(Opened_Tabs)==0):
+        print("List is empty")
+        return
+    
 string='''
 1. Open Tab
 2. Close Tab
