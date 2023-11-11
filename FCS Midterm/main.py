@@ -2,7 +2,8 @@ class Tab:
     def __init__(self,URL,Title):
         self.URL=URL
         self.Title=Title
-Tabs ={} #Title key URL value
+
+Tabs ={} #Title key URL value Dictionary
 Opened_Tabs=[]
 def addTab():
     URL=str(input("Enter website url: "))
@@ -12,10 +13,13 @@ def addTab():
     Opened_Tabs.append(_Tab) #added _tab to my array
 
 def closeTab(index):
-    index=int(input("Enter Index you wish to close: "))
-    for i in Opened_Tabs:
-        if (index==i):
-            Opened_Tabs.pop(i)
+    if (len(Opened_Tabs)==0):
+        print("List is empty")
+        return
+    if not(index):  # Found From StackOverflow https://stackoverflow.com/questions/47560026/how-to-get-python-3-to-use-enter-as-an-input
+        Opened_Tabs.pop() # Close last tab 
+    else:
+        Opened_Tabs.pop(index)     
 
 string='''
 1. Open Tab
@@ -29,12 +33,13 @@ string='''
 9. Exit'''
 def main():
     print(string)
-    choice = int(input("Enter a choice 9 to exit"))
+    choice = int(input("Enter a choice 9 to exit: "))
     while(choice!=9):
         if (choice==1):
             addTab()
         elif (choice==2):
-            print("hi")
+            index=input("Enter index you want to delete: ")
+            closeTab(index)
         elif (choice==3):
             print("hi")
         elif (choice==4):
@@ -51,6 +56,6 @@ def main():
             print("hi")
         else:
             print("Invalid Choice!")
-        choice = int(input("Enter a choice 9 to exit"))
+        choice = int(input("Enter a choice 9 to exit: "))
         
 main()
