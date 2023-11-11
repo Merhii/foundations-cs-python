@@ -26,7 +26,13 @@ def printTabs():
         print("List is empty")
         return
     for Tab in Opened_Tabs:
-        print(Tab.Title,Tab.URL)
+        print(Tab.Title)
+
+def closeAllTabs():
+    if (len(Opened_Tabs)==0):
+        print("List is empty")
+        return
+    
 string='''
 1. Open Tab
 2. Close Tab
