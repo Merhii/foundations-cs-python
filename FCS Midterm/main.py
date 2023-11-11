@@ -25,7 +25,8 @@ def printTabs():
     if (len(Opened_Tabs)==0):
         print("List is empty")
         return
-    
+    for Tab in Opened_Tabs:
+        print(Tab.Title,Tab.URL)
 string='''
 1. Open Tab
 2. Close Tab
@@ -48,7 +49,7 @@ def main():
         elif (choice==3):
             print("hi")
         elif (choice==4):
-            print("hi")
+            printTabs()
         elif (choice==5):
             print("hi")
         elif (choice==6):
