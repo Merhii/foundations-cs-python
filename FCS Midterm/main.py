@@ -1,3 +1,8 @@
+class Tab:
+    def __init__(self,URL,Title):
+        self.URL=URL
+        self.Title=Title
+
 string='''
 1. Open Tab
 2. Close Tab
