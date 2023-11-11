@@ -17,9 +17,9 @@ def closeTab(index):
         print("List is empty")
         return
     if not(index):  # Found From StackOverflow https://stackoverflow.com/questions/47560026/how-to-get-python-3-to-use-enter-as-an-input
-        Opened_Tabs.pop() # Close last tab 
+        Opened_Tabs.pop(-1) # Close last tab 
     else:
-        Opened_Tabs.pop(index)     
+        Opened_Tabs.pop(int(index))     
 
 def printTabs():
     if (len(Opened_Tabs)==0):
@@ -32,7 +32,8 @@ def closeAllTabs():
     if (len(Opened_Tabs)==0):
         print("List is empty")
         return
-    
+    for i in Opened_Tabs:
+        Opened_Tabs.pop(i)
 string='''
 1. Open Tab
 2. Close Tab
@@ -59,7 +60,7 @@ def main():
         elif (choice==5):
             print("hi")
         elif (choice==6):
-            print("hi")
+            closeAllTabs()
         elif (choice==7):
             print("hi")
         elif (choice==8):
