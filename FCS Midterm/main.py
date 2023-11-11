@@ -32,8 +32,7 @@ def closeAllTabs():
     if (len(Opened_Tabs)==0):
         print("List is empty")
         return
-    for i in Opened_Tabs:
-        Opened_Tabs.pop(i)
+    Opened_Tabs.clear()
 string='''
 1. Open Tab
 2. Close Tab
