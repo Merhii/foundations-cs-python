@@ -4,6 +4,7 @@ class Tab:
     def __init__(self,URL,Title):
         self.URL=URL
         self.Title=Title
+        self.nestedTabs={}
 
 Tabs ={} #Title key URL value Dictionary
 Opened_Tabs=[]
@@ -15,7 +16,9 @@ def addTab(parentIndex=None):   #From StackOverflow https://stackoverflow.com/qu
         Tabs[Title]=_Tab #assigned tittle key 
         Opened_Tabs.append(_Tab) #added _tab to my array
     else:
-        
+        parentTab = Opened_Tabs[parentIndex]
+        childTab = Tab(URL,Title)
+        parentTab.nestedTabs[Title]=childTab
 
 def closeTab(index):
     if (len(Opened_Tabs)==0):
@@ -40,19 +43,22 @@ def switchTab(index):
 
 def NestedTab():
     parentIndex= int(input("Enter Parent Index: "))
-    newTabTitle= Opened_Tabs[parentIndex].Title
-    Tabs[newTabTitle]=addTab()
+    parentTab = Opened_Tabs[parentIndex]
+    addTab(parentIndex)
 
-def printTabs():
-    if (len(Opened_Tabs)==0):
+def printTabs(tabs, Floor=0):
+    if (len(tabs)==0):
         print("List is empty")
         return
-    for Tab in Opened_Tabs:
+    for Tab in tabs:
         print(Tab.Title)
+        if (Tab.nestedTabs):
+            printTabs(Tab.nestedTabs.values(),Floor+1)
+        
 
 def closeAllTabs():
     if (len(Opened_Tabs)==0):
-        print("List is empty")
+        print("List already empty")
         return
     Opened_Tabs.clear()
 
@@ -79,7 +85,7 @@ def main():
             index=input("Enter index you want to view it's HTML's Code: ")
             switchTab(index)
         elif (choice==4):
-            printTabs()
+            printTabs(Opened_Tabs)
         elif (choice==5):
             NestedTab()
         elif (choice==6):
