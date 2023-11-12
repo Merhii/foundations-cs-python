@@ -1,3 +1,5 @@
+import requests
+from bs4 import BeautifulSoup # Web scraping https://www.youtube.com/watch?v=0uiPOxUcLgg
 class Tab:
     def __init__(self,URL,Title):
         self.URL=URL
@@ -21,6 +23,14 @@ def closeTab(index):
     else:
         Opened_Tabs.pop(int(index))     
 
+def switchTab(index):
+    if (len(Opened_Tabs)==0):
+        print("List is empty")
+        return
+    req = requests.get(Opened_Tabs[index].URL)
+    soup = BeautifulSoup(req.text,"lxml") 
+    print(soup)    
+
 def printTabs():
     if (len(Opened_Tabs)==0):
         print("List is empty")
@@ -33,6 +43,7 @@ def closeAllTabs():
         print("List is empty")
         return
     Opened_Tabs.clear()
+
 string='''
 1. Open Tab
 2. Close Tab
@@ -53,7 +64,8 @@ def main():
             index=input("Enter index you want to delete: ")
             closeTab(index)
         elif (choice==3):
-            print("hi")
+            index=input("Enter index you want to view it's HTML's Code: ")
+            switchTab(index)
         elif (choice==4):
             printTabs()
         elif (choice==5):
