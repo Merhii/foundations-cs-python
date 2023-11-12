@@ -63,10 +63,14 @@ def closeAllTabs():
         return
     Opened_Tabs.clear()
 
+def tab_to_dict(tab): # W3Schools https://www.w3schools.com/python/ref_func_isinstance.asp
+    if isinstance(tab, Tab):    # bool function to check if tab is a Tab object
+        return {'URL': tab.URL, 'nestedTabs': tab.nestedTabs}
+    return tab
+
 def saveTabs():
     with open("Test.json","w") as json_file:
-        jsonTabs= str(Tabs)
-        json_file.write(jsonTabs)
+        json.dump(Tabs, json_file, default=tab_to_dict)
         print("Dictonary saved in json file")
 
 string='''
@@ -100,7 +104,7 @@ def main():
         elif (choice==7):
             saveTabs()
         elif (choice==8):
-            print("hi")
+            importTabs()
         elif (choice==9):
             exit()
         else:
