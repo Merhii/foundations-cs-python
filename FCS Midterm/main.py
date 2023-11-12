@@ -10,7 +10,7 @@ class Tab:
 Tabs ={} #Title key URL value Dictionary
 Opened_Tabs=[]
 
-def addTab(parentIndex=None):   #From StackOverflow https://stackoverflow.com/questions/36418542/what-does-def-method-parameter-none-mean
+def openTab(parentIndex=None):   #From StackOverflow https://stackoverflow.com/questions/36418542/what-does-def-method-parameter-none-mean
     URL=str(input("Enter website url: "))
     Title=str(input("Enter website Title: "))
     if (parentIndex is None):
@@ -46,7 +46,7 @@ def switchTab(index):
 def NestedTab():
     parentIndex= int(input("Enter Parent Index: "))
     parentTab = Opened_Tabs[parentIndex]
-    addTab(parentIndex)
+    openTab(parentIndex)
 
 def printTabs(tabs, padding=0):
     if (len(tabs)==0):
@@ -99,7 +99,7 @@ def main():
     choice = int(input("Enter a choice 9 to exit: "))
     while(choice!=9):
         if (choice==1):
-            addTab()
+            openTab()
         elif (choice==2):
             index=input("Enter index you want to delete: ")
             closeTab(index)
