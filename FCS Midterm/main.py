@@ -73,6 +73,11 @@ def saveTabs():
         json.dump(Tabs, json_file, default=tab_to_dict)
         print("Dictonary saved in json file")
 
+def importTabs():
+    jsonFile = json.load(open("Test.json"))
+    print(jsonFile)
+    
+
 string='''
 1. Open Tab
 2. Close Tab
