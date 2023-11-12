@@ -7,12 +7,15 @@ class Tab:
 
 Tabs ={} #Title key URL value Dictionary
 Opened_Tabs=[]
-def addTab():
+def addTab(parentIndex=None):   #From StackOverflow https://stackoverflow.com/questions/36418542/what-does-def-method-parameter-none-mean
     URL=str(input("Enter website url: "))
     Title=str(input("Enter website Title: "))
-    _Tab = Tab(URL,Title) # created the object 
-    Tabs[Title]=_Tab #assigned tittle key 
-    Opened_Tabs.append(_Tab) #added _tab to my array
+    if (parentIndex is None):
+        _Tab = Tab(URL,Title) # created the object 
+        Tabs[Title]=_Tab #assigned tittle key 
+        Opened_Tabs.append(_Tab) #added _tab to my array
+    else:
+        
 
 def closeTab(index):
     if (len(Opened_Tabs)==0):
@@ -34,6 +37,11 @@ def switchTab(index):
         req = requests.get(Opened_Tabs[int(index)].URL)
         soup = BeautifulSoup(req.text) 
     print(soup)    
+
+def NestedTab():
+    parentIndex= int(input("Enter Parent Index: "))
+    newTabTitle= Opened_Tabs[parentIndex].Title
+    Tabs[newTabTitle]=addTab()
 
 def printTabs():
     if (len(Opened_Tabs)==0):
@@ -73,7 +81,7 @@ def main():
         elif (choice==4):
             printTabs()
         elif (choice==5):
-            print("hi")
+            NestedTab()
         elif (choice==6):
             closeAllTabs()
         elif (choice==7):
@@ -81,7 +89,7 @@ def main():
         elif (choice==8):
             print("hi")
         elif (choice==9):
-            print("hi")
+            exit()
         else:
             print("Invalid Choice!")
         choice = int(input("Enter a choice 9 to exit: "))
