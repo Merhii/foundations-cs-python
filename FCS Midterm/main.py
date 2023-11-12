@@ -1,3 +1,4 @@
+import json # Json in Python https://www.youtube.com/watch?v=ttQidKChD4c
 import requests
 from bs4 import BeautifulSoup # Web scraping https://www.youtube.com/watch?v=0uiPOxUcLgg
 class Tab:
@@ -46,14 +47,14 @@ def NestedTab():
     parentTab = Opened_Tabs[parentIndex]
     addTab(parentIndex)
 
-def printTabs(tabs, Floor=0):
+def printTabs(tabs, padding=0):
     if (len(tabs)==0):
         print("List is empty")
         return
     for Tab in tabs:
-        print(Tab.Title)
+        print(" "*padding + Tab.Title)
         if (Tab.nestedTabs):
-            printTabs(Tab.nestedTabs.values(),Floor+1)
+            printTabs(Tab.nestedTabs.values(),padding+1)
         
 
 def closeAllTabs():
@@ -61,6 +62,12 @@ def closeAllTabs():
         print("List already empty")
         return
     Opened_Tabs.clear()
+
+def saveTabs():
+    with open("Test.json","w") as json_file:
+        jsonTabs= str(Tabs)
+        json_file.write(jsonTabs)
+        print("Dictonary saved in json file")
 
 string='''
 1. Open Tab
@@ -91,7 +98,7 @@ def main():
         elif (choice==6):
             closeAllTabs()
         elif (choice==7):
-            print("hi")
+            saveTabs()
         elif (choice==8):
             print("hi")
         elif (choice==9):
