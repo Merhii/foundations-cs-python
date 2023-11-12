@@ -27,8 +27,12 @@ def switchTab(index):
     if (len(Opened_Tabs)==0):
         print("List is empty")
         return
-    req = requests.get(Opened_Tabs[index].URL)
-    soup = BeautifulSoup(req.text,"lxml") 
+    if not(index):  # Found From StackOverflow https://stackoverflow.com/questions/47560026/how-to-get-python-3-to-use-enter-as-an-input
+        req = requests.get(Opened_Tabs[0].URL)
+        soup = BeautifulSoup(req.text) 
+    else:
+        req = requests.get(Opened_Tabs[int(index)].URL)
+        soup = BeautifulSoup(req.text) 
     print(soup)    
 
 def printTabs():
