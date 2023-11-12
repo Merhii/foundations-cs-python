@@ -80,7 +80,7 @@ def importTabs():
         jsonTabs =json_file.read()
         print("Dictonary loaded from json file successfully")
         # print(type(jsonTabs))
-        # print(jsonTabs)         Test Cases 
+        print(jsonTabs)        # Test Cases 
         jsonDict= json.loads(jsonTabs)
         # print(type(jsonDict)) Geeks for Geeks https://www.geeksforgeeks.org/python-convert-string-dictionary-to-dictionary/
         # print(jsonDict)
