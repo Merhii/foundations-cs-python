@@ -9,6 +9,7 @@ class Tab:
 
 Tabs ={} #Title key URL value Dictionary
 Opened_Tabs=[]
+
 def addTab(parentIndex=None):   #From StackOverflow https://stackoverflow.com/questions/36418542/what-does-def-method-parameter-none-mean
     URL=str(input("Enter website url: "))
     Title=str(input("Enter website Title: "))
@@ -52,7 +53,7 @@ def printTabs(tabs, padding=0):
         print("List is empty")
         return
     for Tab in tabs:
-        print(" "*padding + Tab.Title)
+        print(" "*padding + Tab.Title) # added padding to check on the nested ones
         if (Tab.nestedTabs):
             printTabs(Tab.nestedTabs.values(),padding+1)
         
@@ -65,7 +66,7 @@ def closeAllTabs():
 
 def tab_to_dict(tab): # W3Schools https://www.w3schools.com/python/ref_func_isinstance.asp
     if isinstance(tab, Tab):    # bool function to check if tab is a Tab object
-        return {'URL': tab.URL, 'nestedTabs': tab.nestedTabs}
+        return {'URL': tab.URL,'Title':tab.Title, 'nestedTabs': tab.nestedTabs}
     return tab
 
 def saveTabs():
@@ -74,10 +75,15 @@ def saveTabs():
         print("Dictonary saved in json file")
 
 def importTabs():
-    jsonFile = json.load(open("Test.json"))
-    print(jsonFile)
-    
-
+    with open("Test.json","r") as json_file:
+        jsonTabs =json_file.read()
+        print("Dictonary loaded from json file successfully")
+        # print(type(jsonTabs))
+        # print(jsonTabs)         Test Cases 
+        jsonDict= json.loads(jsonTabs)
+        # print(type(jsonDict)) Geeks for Geeks https://www.geeksforgeeks.org/python-convert-string-dictionary-to-dictionary/
+        # print(jsonDict)
+        Opened_Tabs.append(Tabs)
 string='''
 1. Open Tab
 2. Close Tab
