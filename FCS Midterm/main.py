@@ -75,7 +75,8 @@ def saveTabs():
         print("Dictonary saved in json file")
 
 def importTabs():
-    with open("Test.json","r") as json_file:
+    File=str(input("Enter File Name: "))
+    with open(File,"r") as json_file:
         jsonTabs =json_file.read()
         print("Dictonary loaded from json file successfully")
         # print(type(jsonTabs))
