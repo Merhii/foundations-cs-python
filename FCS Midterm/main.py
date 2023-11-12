@@ -43,7 +43,7 @@ def switchTab(index):
         soup = BeautifulSoup(req.text) 
     print(soup)    
 
-def NestedTab():
+def openNestedTab():
     parentIndex= int(input("Enter Parent Index: "))
     parentTab = Opened_Tabs[parentIndex]
     openTab(parentIndex)
@@ -109,7 +109,7 @@ def main():
         elif (choice==4):
             printTabs(Opened_Tabs)
         elif (choice==5):
-            NestedTab()
+            openNestedTab()
         elif (choice==6):
             closeAllTabs()
         elif (choice==7):
