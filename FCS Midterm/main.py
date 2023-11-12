@@ -1,14 +1,7 @@
 import json # Json in Python https://www.youtube.com/watch?v=ttQidKChD4c
 import requests
 from bs4 import BeautifulSoup # Web scraping https://www.youtube.com/watch?v=0uiPOxUcLgg
-class Tab:
-    def __init__(self,URL,Title):
-        self.URL=URL
-        self.Title=Title
-        self.nestedTabs={}
 
-Tabs ={} #Title key URL value Dictionary
-Opened_Tabs=[]
 
 def openTab(parentIndex=None):   #From StackOverflow https://stackoverflow.com/questions/36418542/what-does-def-method-parameter-none-mean
     URL=str(input("Enter website url: "))
